@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sautech | Saúde Ocupacional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="../sistema/css/style.css">
+</head>
+
+<body>
+
+  <!-- =========================================================
+       CABEÇALHO / BARRA DE NAVEGAÇÃO
+  ========================================================== -->
+  <header class="topbar">
+
+    <div class="nav-wrap">
+
+      <!-- LOGO -->
+      <a class="brand" href="#inicio">
+
+        <span class="logo-mark">
+          <img
+            src="../sistema/css/images/WhatsApp_Image_2026-09-24_at_19.46.45-removebg-preview.png"
+            alt=""
+            class="logo-icon2"
+          >
+        </span>
+
+        <img
+          src="../sistema/css/images/WhatsApp_Image_2026-09-24_at_19.46.45-removebg-preview - Copia.png"
+          alt=""
+          class="logo-icon"
+        >
+
+      </a>
+
+
+      <!-- MENU PRINCIPAL -->
+      <nav id="menu" class="menu">
+
+        <button class="nav-item active" data-view="dashboard">
+          <span>Início / Dashboard</span>
+        </button>
+
+        <button class="nav-item" data-view="agendamentos">
+          <span>Agendamentos</span>
+        </button>
+
+        <button class="nav-item" data-view="colaboradores">
+          <span>Colaboradores</span>
+        </button>
+
+        <button class="nav-item" data-view="aso">
+          <span>Atestado de Saúde Ocupacional (ASO)</span>
+        </button>
+
+        <button class="nav-item" data-view="configuracoes">
+          <span>Configurações</span>
+        </button>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================================
+       CONTEÚDO PRINCIPAL DO SISTEMA
+  ========================================================== -->
+  <main>
+
+
+    <!-- =======================================================
+         TELA: DASHBOARD / INÍCIO
+    ======================================================== -->
+    <div class="app-view" id="dashboard-view">
+
+
+      <!-- -------------------------------------------------------
+           SEÇÃO: BOAS-VINDAS
+      -------------------------------------------------------- -->
+      <section class="tela" id="inicio">
+
+        <div class="welcome">
+
+          <div>
+            <h1>
+              Olá, Administrador! Bem-vindo ao
+              <span>Sautech</span>
+            </h1>
+            <br>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- -------------------------------------------------------
+           SEÇÃO: CONSULTA RÁPIDA POR CPF
+      -------------------------------------------------------- -->
+      <section class="buscar card" id="buscar">
+
+        <div class="accent-line"></div>
+
+        <div class="search-header">
+
+          <div>
+            <h2>Consulta rápida por CPF</h2>
+
+            <p>
+              Localize o prontuário ocupacional, dados cadastrais
+              e histórico de exames do colaborador.
+            </p>
+          </div>
+
+
+          <!-- FORMULÁRIO DE BUSCA -->
+          <form id="search-form">
+
+            <label>
+              <input
+                id="buscaCPF"
+                placeholder="000.000.000-00"
+                inputmode="numeric"
+              >
+            </label>
+
+            <button type="submit" class="primary">
+              Buscar colaborador
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <!-- RESULTADO DA BUSCA -->
+        <div id="resultadoBusca" class="resultadoBusca">
+
+          <div>
+
+            <div class="result-buttons">
+
+              <button type="button" class="soft" data-fill>
+                Preencher no agendamento
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =======================================================
+           GRID PRINCIPAL DO DASHBOARD
+      ======================================================== -->
+      <div class="dashboard-grid">
+
+
+        <!-- =====================================================
+             SEÇÃO: NOVO AGENDAMENTO
+        ====================================================== -->
+        <section class="agendamento card" id="agendamento">
+
+          <div class="section-heading">
+
+            <div>
+              <span>Novo agendamento</span>
+              <h2>Agendamento de exames</h2>
+            </div>
+
+          </div>
+
+
+          <!-- FORMULÁRIO DE AGENDAMENTO -->
+          <form id="appointment-form">
+
+
+            <!-- -------------------------------------------------
+                 ETAPA 1: DADOS DO COLABORADOR
+            -------------------------------------------------- -->
+            <div class="etapa" id="etapa1">
+
+              <p class="form-title">
+                1. Dados do colaborador
+              </p>
+
+
+              <!-- NOME -->
+              <label>
+                Nome completo
+
+                <input
+                  id="nome"
+                  required
+                  placeholder="Digite o nome completo do colaborador"
+                >
+              </label>
+
+
+              <!-- CPF + DATA DE NASCIMENTO -->
+              <div class="two-columns">
+
+                <label>
+                  CPF
+
+                  <input
+                    id="cpf"
+                    required
+                    placeholder="000.000.000-00"
+                  >
+                </label>
+
+
+                <label>
+                  Data de nascimento
+
+                  <input
+                    id="data-nascimento"
+                    type="date"
+                  >
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <!-- -------------------------------------------------
+                 ETAPA 2: DETALHES DO EXAME
+            -------------------------------------------------- -->
+            <div class="etapa" id="etapa2">
+
+              <p class="form-title">
+                2. Detalhes do exame
+              </p>
+
+
+              <!-- TIPO DE EXAME -->
+              <label>
+                Tipo de exame ocupacional
+
+                <select id="tipo-exame">
+
+                  <option value="">
+                    Selecione o tipo de exame
+                  </option>
+
+                  <option value="periodico">
+                    Exame periódico
+                  </option>
+
+                  <option value="admissional">
+                    Exame admissional
+                  </option>
+
+                  <option value="demissional">
+                    Exame demissional
+                  </option>
+
+                  <option value="retorno">
+                    Retorno ao trabalho
+                  </option>
+
+                  <option value="mudanca">
+                    Mudança de função
+                  </option>
+
+                  <option value="interconsulta">
+                    Interconsulta
+                  </option>
+
+                </select>
+
+              </label>
+
+
+              <!-- CARGO / FUNÇÃO -->
+              <label id="campo-funcao" hidden>
+                Qual cargo do colaborador?
+
+                <input
+                  id="nova-funcao"
+                  placeholder="Digite o cargo"
+                >
+              </label>
+
+
+              <!-- -------------------------------------------------
+                   UPLOAD DE DOCUMENTOS
+              -------------------------------------------------- -->
+              <div id="area-upload" class="area-upload" hidden>
+
+                <p id="upload-explicacao"></p>
+
+
+                <label class="upload-label">
+                  Selecionar documentos
+
+                  <input
+                    id="documentos"
+                    type="file"
+                    multiple
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    hidden
+                  >
+                </label>
+
+
+                <small id="upload-limites"></small>
+
+                <ul
+                  id="lista-arquivos"
+                  class="lista-arquivos"
+                ></ul>
+
+              </div>
+
+
+              <!-- CLÍNICA -->
+              <label>
+                Selecione a clínica
+
+                <select id="medico">
+
+                  <option value="">
+                    Selecione a clínica
+                  </option>
+
+                  <option>
+                    Clinica X
+                  </option>
+
+                  <option>
+                    Clinica Y
+                  </option>
+
+                  <option>
+                    Clínica z
+                  </option>
+
+                </select>
+
+              </label>
+
+
+              <!-- DATA DO EXAME -->
+              <div class="two-columns">
+
+                <label>
+                  Data
+
+                  <input
+                    id="data-exame"
+                    type="date"
+                  >
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <!-- -------------------------------------------------
+                 BOTÕES DO AGENDAMENTO
+            -------------------------------------------------- -->
+            <div class="botoes">
+
+              <button
+                class="primary"
+                id="confirmarAgendamento"
+                type="submit"
+              >
+                Confirmar agendamento
+              </button>
+
+              <button
+                class="secondary"
+                type="reset"
+              >
+                Limpar
+              </button>
+
+            </div>
+
+          </form>
+
+        </section>
+
+
+        <!-- =====================================================
+             LADO DIREITO DO DASHBOARD
+        ====================================================== -->
+        <div class="agenda-side">
+
+
+          <!-- ===================================================
+               SEÇÃO: AGENDAMENTOS RECENTES
+          ==================================================== -->
+          <section class="recentes card" id="recentes">
+
+            <div class="recentes2">
+
+              <div class="section-heading">
+
+                <div>
+                  <span>Atendimentos diários</span>
+                  <h2>Agendamentos recentes</h2>
+                </div>
+
+              </div>
+
+
+              <!-- TABELA DE AGENDAMENTOS -->
+              <div class="table-wrap">
+
+                <table>
+
+                  <thead>
+
+                    <tr>
+                      <th>Colaboradores / CPF</th>
+                      <th>Exame</th>
+                      <th>Horário</th>
+                      <th>Status</th>
+                      <th>Ações</th>
+                    </tr>
+
+                  </thead>
+
+                  <tbody id="appointments-body"></tbody>
+
+                </table>
+
+              </div>
+
+
+              <!-- PAGINAÇÃO -->
+              <div class="table-footer">
+
+                <span id="total-label">
+                  Exibindo 4 de 28 agendamentos
+                </span>
+
+                <div>
+
+                  <button>
+                    Anterior
+                  </button>
+
+                  <button class="current">
+                    1
+                  </button>
+
+                  <button>
+                    2
+                  </button>
+
+                  <button>
+                    Próximo
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ===================================================
+               SEÇÃO: STATUS DOS ATENDIMENTOS
+          ==================================================== -->
+          <section class="dashboard-summary card">
+
+            <div>
+
+              <span>
+                Resumo dos agendamentos
+              </span>
+
+              <h2>
+                Status dos atendimentos
+              </h2>
+
+              <p>
+                Dados mockados do front-end, prontos para futura
+                integração.
+              </p>
+
+            </div>
+
+
+            <!-- GRÁFICO -->
+            <div class="chart-content">
+
+              <div
+                id="grafico-pizza"
+                class="grafico-pizza"
+              ></div>
+
+              <ul
+                id="legenda-grafico"
+                class="legenda-grafico"
+              ></ul>
+
+            </div>
+
+          </section>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         TELA: AGENDAMENTOS
+    ======================================================== -->
+    <section
+      id="agendamentos-view"
+      class="app-view"
+      hidden
+    >
+
+      <section class="card page-card">
+
+        <div class="section-heading">
+
+          <div>
+            <span>Atendimentos</span>
+            <h2>Agendamentos</h2>
+          </div>
+
+          <button
+            id="novo-agendamento"
+            class="primary"
+            type="button"
+          >
+            Novo agendamento
+          </button>
+
+        </div>
+
+
+        <!-- TABELA DE AGENDAMENTOS -->
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>Colaborador / CPF</th>
+                <th>Exame</th>
+                <th>Horário</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="appointments-full-body"></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- =======================================================
+         TELA: COLABORADORES
+    ======================================================== -->
+    <section
+      id="colaboradores-view"
+      class="app-view"
+      hidden
+    >
+
+      <section class="card page-card">
+
+        <div class="section-heading">
+
+          <div>
+            <span>Cadastro</span>
+            <h2>Colaboradores</h2>
+          </div>
+
+        </div>
+
+
+        <!-- TABELA DE COLABORADORES -->
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>Colaborador</th>
+                <th>CPF</th>
+                <th>Data de nascimento</th>
+                <th>Cargo</th>
+                <th>Último exame</th>
+                <th>Tipo do exame</th>
+                <th>Data do exame</th>
+                <th>Data de demissão</th>
+                <th>Status</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="colaboradores-body"></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- =======================================================
+         TELA: ASO
+    ======================================================== -->
+    <section
+      id="aso-view"
+      class="app-view"
+      hidden
+    >
+
+      <section class="card page-card">
+
+        <div class="section-heading">
+
+          <div>
+            <span>Documentos liberados</span>
+            <h2>Atestado de Saúde Ocupacional</h2>
+          </div>
+
+        </div>
+
+
+        <!-- BUSCA POR COLABORADOR -->
+        <label class="search-name">
+
+          Pesquisar colaborador
+
+          <input
+            id="busca-aso"
+            placeholder="Digite o nome do colaborador"
+          >
+
+        </label>
+
+
+        <!-- RESULTADO DOS ASOs -->
+        <div
+          id="resultado-aso"
+          class="aso-lista"
+        ></div>
+
+      </section>
+
+    </section>
+
+
+    <!-- =======================================================
+         TELA: CONFIGURAÇÕES
+    ======================================================== -->
+    <section
+      id="configuracoes-view"
+      class="app-view"
+      hidden
+    >
+
+      <section class="card page-card">
+
+        <div class="section-heading">
+
+          <div>
+            <span>Administração</span>
+            <h2>Configurações</h2>
+          </div>
+
+        </div>
+
+
+        <!-- ---------------------------------------------------
+             APARÊNCIA
+        ---------------------------------------------------- -->
+        <div class="config-item">
+
+          <div>
+            <strong>Aparência</strong>
+            <p>Modo escuro</p>
+          </div>
+
+          <span class="disabled-option">
+            Desativado
+          </span>
+
+        </div>
+
+
+        <!-- ---------------------------------------------------
+             CADASTRO DE CLIENTES
+        ---------------------------------------------------- -->
+        <form
+          id="cliente-form"
+          class="cliente-form"
+        >
+
+          <p class="form-title">
+            Cadastro de clientes
+          </p>
+
+
+          <div class="two-columns">
+
+            <label>
+              Nome da empresa
+              <input required>
+            </label>
+
+            <label>
+              Razão social
+              <input required>
+            </label>
+
+            <label>
+              CNPJ
+              <input required>
+            </label>
+
+            <label>
+              Nome do responsável
+              <input required>
+            </label>
+
+            <label>
+              E-mail
+              <input type="email" required>
+            </label>
+
+            <label>
+              Telefone
+              <input required>
+            </label>
+
+            <label>
+              Usuário / login
+              <input required>
+            </label>
+
+            <label>
+              Senha
+              <input type="password" required>
+            </label>
+
+            <label>
+              Confirmação de senha
+              <input type="password" required>
+            </label>
+
+            <label>
+              Status do cliente
+
+              <select>
+                <option>Ativo</option>
+                <option>Inativo</option>
+              </select>
+
+            </label>
+
+          </div>
+
+
+          <!-- BOTÃO -->
+          <div class="botoes">
+
+            <button
+              class="primary"
+              type="submit"
+            >
+              Cadastrar cliente
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================================================
+       MODAL DE VISUALIZAÇÃO DO ASO
+  ========================================================== -->
+  <div
+    id="modal-aso"
+    class="modal-aso"
+    hidden
+  >
+
+    <div class="modal-content">
+
+      <!-- FECHAR MODAL -->
+      <button
+        class="modal-close"
+        data-close-aso
+        type="button"
+      >
+        ×
+      </button>
+
+
+      <h2>
+        Visualização do ASO
+      </h2>
+
+      <p>
+        Documento de demonstração (dado mockado).
+      </p>
+
+
+      <!-- DOCUMENTO MOCKADO -->
+      <div class="mock-document">
+
+        <strong>
+          ATESTADO DE SAÚDE OCUPACIONAL
+        </strong>
+
+        <span>
+          Documento de demonstração para visualização
+          no front-end.
+        </span>
+
+      </div>
+
+
+      <!-- DOWNLOAD -->
+      <button
+        class="primary"
+        type="button"
+        data-download-aso
+      >
+        Baixar demonstração
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       NOTIFICAÇÕES / TOAST
+  ========================================================== -->
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+  ></div>
+
+
+  <!-- =========================================================
+       RODAPÉ
+  ========================================================== -->
+  <footer>
+
+    © 2026 Sautech Saúde e Tecnologia Ltda.
+    Todos os direitos reservados.
+
+    <span>
+      Manual de uso · Suporte técnico · Termos e privacidade
+    </span>
+
+  </footer>
+
+
+  <!-- =========================================================
+       JAVASCRIPT PRINCIPAL
+  ========================================================== -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
